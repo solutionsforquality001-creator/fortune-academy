@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { cn } from "@/utils/cn";
-import { PROGRAMMES, whatsappLink } from "@/lib/site";
-import { ArrowUpRight, PROGRAMME_ICONS, WhatsApp } from "./Icons";
+import { PROGRAMMES, telegramLink } from "@/lib/site";
+import { ArrowUpRight, PROGRAMME_ICONS, Telegram } from "./Icons";
 import { Btn, SectionHead, SectionShell } from "./ui";
 
 export default function Programmes() {
@@ -37,10 +37,10 @@ export default function Programmes() {
           />
           <div className="reveal shrink-0" style={{ transitionDelay: "140ms" }}>
             <Btn
-              href={whatsappLink("Hello, I'd like advice on which Fortune Academy programme suits my level.")}
+              href={telegramLink()}
               external
               variant="outline"
-              icon={<WhatsApp className="h-4 w-4 text-mint-400" />}
+              icon={<Telegram className="h-4 w-4 text-mint-400" />}
             >
               Which track suits me?
             </Btn>

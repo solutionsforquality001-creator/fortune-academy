@@ -1,51 +1,13 @@
-import { useEffect, useState } from "react";
-import { cn } from "@/utils/cn";
-import { whatsappLink } from "@/lib/site";
-import { ArrowUpRight, Check, Close, WhatsApp } from "./Icons";
+import { telegramLink } from "@/lib/site";
+import { Check, Close, Telegram } from "./Icons";
 import { Btn, Eyebrow, SectionShell } from "./ui";
 
-type Mentor = {
-  name: string;
-  role: string;
-  since: string;
-  img: string;
-  quote: string;
-  specialisms: string[];
-  trades: string;
+const MENTOR = {
+  name: "Isabella Logan",
+  role: "Head Of Education, Trader And Consultant",
+  since: "Trading since 2009",
+  img: "/isabella-logan.jpg",
 };
-
-const MENTORS: Mentor[] = [
-  {
-    name: "Marcus Adeyemi",
-    role: "Head of Education",
-    since: "Trading since 2011",
-    img: "https://images.pexels.com/photos/38453564/pexels-photo-38453564.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=1120",
-    quote:
-      "I spent four years losing money before I ever wrote a plan. That is why the first module we teach is risk, not entries.",
-    specialisms: ["Market structure", "Index trading", "Prop-firm challenges"],
-    trades: "1,900+ journal entries reviewed with members",
-  },
-  {
-    name: "Isabella Moreau",
-    role: "Lead Strategy Mentor",
-    since: "Trading since 2014",
-    img: "https://images.pexels.com/photos/8528574/pexels-photo-8528574.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=1120",
-    quote:
-      "A strategy you cannot explain in one sentence is a strategy you cannot execute when it matters. We simplify until it sticks.",
-    specialisms: ["Supply & demand", "Gold & FX majors", "Backtesting protocol"],
-    trades: "Runs the Wednesday Strategy Lab",
-  },
-  {
-    name: "Amara Nwosu",
-    role: "Risk & Performance Coach",
-    since: "Trading since 2016",
-    img: "https://images.pexels.com/photos/24285935/pexels-photo-24285935.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=1120",
-    quote:
-      "Your journal tells you the truth about your psychology long before your P&L does. We read it together every single week.",
-    specialisms: ["Trading psychology", "Position sizing", "Drawdown recovery"],
-    trades: "Weekly 1-to-1 mentor reviews",
-  },
-];
 
 const FOR_YOU = [
   "You want to understand why a trade worked, not just copy it",
@@ -62,17 +24,6 @@ const NOT_FOR_YOU = [
 ];
 
 export default function Desk() {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused) return;
-    const id = window.setInterval(() => setActive((a) => (a + 1) % MENTORS.length), 6500);
-    return () => window.clearInterval(id);
-  }, [paused]);
-
-  const mentor = MENTORS[active];
-
   return (
     <SectionShell id="desk" tone="dark" className="py-24 lg:py-32">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-25 mask-fade-b" aria-hidden="true" />
@@ -85,7 +36,7 @@ export default function Desk() {
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           {/* ---------------- left ---------------- */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-6">
             <div className="reveal">
               <Eyebrow>The desk</Eyebrow>
             </div>
@@ -93,77 +44,35 @@ export default function Desk() {
               className="reveal mt-6 font-display text-[clamp(2.1rem,5vw,3.5rem)] leading-[1.03] font-semibold tracking-[-0.028em] text-paper-50"
               style={{ transitionDelay: "60ms" }}
             >
-              Three mentors.
+              Meet your
               <br />
-              One <span className="text-gold-400 italic">standard</span>.
+              <span className="text-gold-400 italic">mentor</span>.
             </h2>
             <p
               className="reveal mt-6 max-w-lg text-[15px] leading-[1.8] text-paper-400"
               style={{ transitionDelay: "110ms" }}
             >
-              Every session is taught by a working trader who journals their own positions. No
-              anonymous signal feeds, no rented influencers, no one on the team who has not blown an
-              account and learned from it publicly.
+              Every session is led by a working trader. No anonymous signal feeds and no rented
+              influencers — just education, process and honest feedback.
             </p>
 
-            {/* rotating quote */}
+            {/* profile */}
             <div
               className="reveal mt-9 rounded-[20px] border border-gold-500/25 bg-gradient-to-br from-gold-500/[0.09] to-transparent p-6"
               style={{ transitionDelay: "160ms" }}
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
             >
               <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-400 font-mono text-[11px] font-bold text-ink-950">
-                  {mentor.name.split(" ").map((w) => w[0]).join("")}
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold-400 font-mono text-[12px] font-bold text-ink-950">
+                  {MENTOR.name.split(" ").map((w) => w[0]).join("")}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p key={mentor.name} className="animate-rise-in truncate font-display text-[17px] font-semibold text-paper-50">
-                    {mentor.name}
-                  </p>
-                  <p className="font-mono text-[10px] tracking-[0.2em] text-gold-400 uppercase">
-                    {mentor.role}
+                  <p className="font-display text-[20px] font-semibold text-paper-50">{MENTOR.name}</p>
+                  <p className="mt-0.5 font-mono text-[10px] tracking-[0.2em] text-gold-400 uppercase">
+                    {MENTOR.role}
                   </p>
                 </div>
               </div>
-
-              <p
-                key={mentor.quote}
-                className="animate-rise-in mt-4 font-display text-[18px] leading-[1.55] font-medium text-paper-100 italic sm:text-[19px]"
-              >
-                “{mentor.quote}”
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {mentor.specialisms.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-full border border-white/10 bg-ink-900/60 px-3 py-1.5 font-mono text-[10px] tracking-[0.12em] text-paper-300 uppercase"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-
-              {/* dots */}
-              <div className="mt-6 flex items-center gap-2">
-                {MENTORS.map((m, i) => (
-                  <button
-                    key={m.name}
-                    type="button"
-                    onClick={() => setActive(i)}
-                    aria-label={`Show ${m.name}`}
-                    aria-pressed={i === active}
-                    className={cn(
-                      "h-1.5 rounded-full transition-all duration-500",
-                      i === active ? "w-10 bg-gold-400" : "w-4 bg-ink-600 hover:bg-ink-500",
-                    )}
-                  />
-                ))}
-                <span className="ml-auto font-mono text-[10px] tracking-[0.16em] text-paper-400 uppercase">
-                  {String(active + 1).padStart(2, "0")} / 0{MENTORS.length}
-                </span>
-              </div>
+              <p className="mt-4 text-[13.5px] text-paper-300">{MENTOR.since}</p>
             </div>
 
             {/* for / not for */}
@@ -197,81 +106,36 @@ export default function Desk() {
             </div>
           </div>
 
-          {/* ---------------- right: collage ---------------- */}
-          <div className="lg:col-span-7">
+          {/* ---------------- right: photo ---------------- */}
+          <div className="lg:col-span-6">
             <div
-              className="reveal grid gap-4 sm:grid-cols-3"
+              className="reveal group relative overflow-hidden rounded-[20px] border border-gold-400/70 shadow-[0_36px_80px_-40px_rgba(224,169,60,.7)]"
               style={{ transitionDelay: "140ms" }}
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
             >
-              {MENTORS.map((m, i) => {
-                const isActive = i === active;
-                return (
-                  <button
-                    key={m.name}
-                    type="button"
-                    onClick={() => setActive(i)}
-                    aria-pressed={isActive}
-                    className={cn(
-                      "group relative overflow-hidden rounded-[20px] border text-left transition-all duration-600",
-                      isActive
-                        ? "border-gold-400/70 shadow-[0_36px_80px_-40px_rgba(224,169,60,.7)] sm:col-span-1"
-                        : "border-white/10 hover:border-gold-500/45",
-                      i === 0 && "sm:col-span-3 sm:row-span-1",
-                    )}
-                  >
-                    <div className={cn("relative overflow-hidden", i === 0 ? "h-[300px] sm:h-[330px]" : "h-[260px]")}>
-                      <img
-                        src={m.img}
-                        alt={`${m.name}, ${m.role} at Fortune Academy World`}
-                        loading="lazy"
-                        className={cn(
-                          "h-full w-full object-cover object-center transition-all duration-[1.4s] ease-out",
-                          isActive ? "scale-[1.04] opacity-95 grayscale-0" : "opacity-55 grayscale group-hover:scale-105 group-hover:opacity-80 group-hover:grayscale-0",
-                        )}
-                      />
-                      <div
-                        className="pointer-events-none absolute inset-0"
-                        style={{
-                          background:
-                            "linear-gradient(to top, rgba(4,6,12,.96) 6%, rgba(4,6,12,.45) 45%, rgba(4,6,12,.12) 100%)",
-                        }}
-                      />
-
-                      {isActive && (
-                        <span className="absolute top-4 left-4 flex items-center gap-1.5 rounded-full border border-gold-400/50 bg-ink-950/80 px-2.5 py-1 font-mono text-[9px] tracking-[0.2em] text-gold-300 uppercase backdrop-blur">
-                          <span className="h-1 w-1 animate-blink rounded-full bg-gold-400" />
-                          On the desk
-                        </span>
-                      )}
-
-                      <div className="absolute inset-x-0 bottom-0 p-5">
-                        <p className="font-display text-[21px] leading-tight font-semibold text-paper-50">
-                          {m.name}
-                        </p>
-                        <p className="mt-1 font-mono text-[10px] tracking-[0.2em] text-gold-400 uppercase">
-                          {m.role}
-                        </p>
-                        <p className="mt-2 text-[12px] text-paper-400">{m.since}</p>
-                        <div
-                          className={cn(
-                            "grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.16,1,.3,1)]",
-                            isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
-                          )}
-                        >
-                          <div className="overflow-hidden">
-                            <p className="mt-3 flex items-center gap-2 border-t border-white/12 pt-3 text-[12px] text-mint-300">
-                              <ArrowUpRight className="h-3.5 w-3.5" />
-                              {m.trades}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
+              <div className="relative h-[460px] overflow-hidden sm:h-[560px]">
+                <img
+                  src={MENTOR.img}
+                  alt={`${MENTOR.name}, ${MENTOR.role} at Fortune Academy World`}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top transition-transform duration-[1.4s] ease-out group-hover:scale-[1.03]"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(4,6,12,.96) 4%, rgba(4,6,12,.4) 38%, rgba(4,6,12,0) 70%)",
+                  }}
+                />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <p className="font-display text-[28px] leading-tight font-semibold text-paper-50">
+                    {MENTOR.name}
+                  </p>
+                  <p className="mt-1 font-mono text-[10.5px] tracking-[0.2em] text-gold-400 uppercase">
+                    {MENTOR.role}
+                  </p>
+                  <p className="mt-2 text-[13px] text-paper-300">{MENTOR.since}</p>
+                </div>
+              </div>
             </div>
 
             <div
@@ -279,15 +143,14 @@ export default function Desk() {
               style={{ transitionDelay: "200ms" }}
             >
               <p className="max-w-md text-[13.5px] leading-relaxed text-paper-300">
-                Want to know which mentor will run your onboarding? Ask before you pay — we will tell
-                you honestly.
+                Have a question before you pay? Ask us first — we will answer honestly.
               </p>
               <Btn
-                href={whatsappLink("Hello, which mentor would handle my onboarding at Fortune Academy World?")}
+                href={telegramLink()}
                 external
                 variant="outline"
                 size="sm"
-                icon={<WhatsApp className="h-4 w-4 text-mint-400" />}
+                icon={<Telegram className="h-4 w-4 text-mint-400" />}
               >
                 Ask the desk
               </Btn>

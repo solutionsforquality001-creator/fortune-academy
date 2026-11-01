@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
-import { NAV_LINKS, PHONE_DISPLAY, whatsappLink } from "@/lib/site";
+import { NAV_LINKS, PHONE_DISPLAY } from "@/lib/site";
 import { useActiveSection, useScrollInfo } from "@/hooks/useMotion";
-import { ArrowUpRight, Close, Logo, Menu, Phone, Telegram, WhatsApp } from "./Icons";
+import { ArrowUpRight, Close, Logo, Menu, Phone, Telegram } from "./Icons";
 import { Btn } from "./ui";
 
 const SECTION_IDS = ["about", "programmes", "path", "markets", "members", "desk", "join", "faq", "contact"];
@@ -134,15 +134,6 @@ export default function Nav() {
               >
                 <Telegram className="h-4.5 w-4.5" />
               </a>
-              <a
-                href={whatsappLink("Hello Fortune Academy World, I would like to know more about the trading programme.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Message us on WhatsApp"
-                className="hidden h-10 w-10 items-center justify-center rounded-full border border-ink-600 text-paper-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#25D366]/70 hover:text-[#7bf0b4] sm:flex"
-              >
-                <WhatsApp className="h-4.5 w-4.5" />
-              </a>
               <Btn href="#join" size="sm" className="hidden sm:inline-flex">
                 Join now
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -213,15 +204,7 @@ export default function Nav() {
             <Btn href="#join" size="lg" className="w-full" onClick={() => setOpen(false)}>
               Apply to join
             </Btn>
-            <div className="grid grid-cols-2 gap-3">
-              <Btn
-                href={whatsappLink("Hello Fortune Academy World, I have a question.")}
-                external
-                variant="wa"
-                icon={<WhatsApp className="h-4 w-4" />}
-              >
-                WhatsApp
-              </Btn>
+            <div className="grid grid-cols-1 gap-3">
               <Btn
                 href="https://t.me/+447460033935"
                 external

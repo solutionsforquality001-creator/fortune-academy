@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/utils/cn";
-import { HERO_PAIRS, PILLARS, whatsappLink } from "@/lib/site";
+import { HERO_PAIRS, PILLARS, telegramLink } from "@/lib/site";
 import { usePrefersReducedMotion } from "@/hooks/useMotion";
-import { ArrowUpRight, Live, Star, WhatsApp } from "./Icons";
+import { ArrowUpRight, Live, Star, Telegram } from "./Icons";
 import { Btn, Eyebrow } from "./ui";
 
 /* ------------------------------------------------------------------ */
@@ -290,11 +290,11 @@ export default function Hero() {
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Btn>
               <Btn
-                href={whatsappLink("Hello Fortune Academy World, I'd like to speak to a mentor about joining.")}
+                href={telegramLink()}
                 external
                 variant="outline"
                 size="lg"
-                icon={<WhatsApp className="h-4 w-4 text-mint-400" />}
+                icon={<Telegram className="h-4 w-4 text-mint-400" />}
               >
                 Talk to a mentor
               </Btn>

@@ -6,18 +6,18 @@ import {
   PAYMENT_METHODS,
   PHONE_DISPLAY,
   telegramLink,
-  whatsappLink,
 } from "@/lib/site";
-import { Arrow, ArrowUpRight, Check, Copy, Sparkle, Telegram, WhatsApp } from "./Icons";
+import { Arrow, ArrowUpRight, Check, Copy, Sparkle, Telegram } from "./Icons";
 import { Btn, Eyebrow, SectionShell } from "./ui";
 
-type Currency = "USD" | "GBP";
+type Currency = "USD" | "GBP" | "EUR";
 type Payment = (typeof PAYMENT_METHODS)[number]["id"];
 
-const CURRENCY_SYMBOL: Record<Currency, string> = { USD: "$", GBP: "£" };
+const CURRENCY_SYMBOL: Record<Currency, string> = { USD: "$", GBP: "£", EUR: "€" };
 const RATE_NOTE: Record<Currency, string> = {
   USD: "USD prices apply to crypto payments",
   GBP: "GBP prices apply to card & bank transfer",
+  EUR: "EUR prices apply to card & bank transfer",
 };
 
 const STEPS = ["Choose your plan", "Your details", "Review & send"];
@@ -42,8 +42,8 @@ export default function JoinFlow() {
 
   const pack = useMemo(() => PACKAGES.find((p) => p.id === packId)!, [packId]);
   const sym = CURRENCY_SYMBOL[currency];
-  const price = currency === "USD" ? pack.usd : pack.gbp;
-  const was = currency === "USD" ? pack.usdWas : pack.gbpWas;
+  const price = currency === "USD" ? pack.usd : currency === "GBP" ? pack.gbp : pack.eur;
+  const was = currency === "USD" ? pack.usdWas : currency === "GBP" ? pack.gbpWas : pack.eurWas;
   const saved = was ? was - price : 0;
   const perMonth = price / pack.months;
 
@@ -63,7 +63,7 @@ export default function JoinFlow() {
       "",
       `NAME: ${form.name || "—"}`,
       `EMAIL: ${form.email || "—"}`,
-      `WHATSAPP: ${form.phone || "—"}`,
+      `PHONE: ${form.phone || "—"}`,
       `COUNTRY: ${form.country || "—"}`,
       `EXPERIENCE: ${form.experience}`,
       form.goals ? `GOALS: ${form.goals}` : "",
@@ -133,7 +133,7 @@ export default function JoinFlow() {
           <div className="reveal flex items-center gap-3" style={{ transitionDelay: "100ms" }}>
             <span className="font-mono text-[10.5px] tracking-[0.18em] text-ink-500 uppercase">Currency</span>
             <div className="inline-flex rounded-full border border-ink-900/12 bg-white p-1">
-              {(["USD", "GBP"] as Currency[]).map((c) => (
+              {(["USD", "GBP", "EUR"] as Currency[]).map((c) => (
                 <button
                   key={c}
                   type="button"
@@ -157,7 +157,7 @@ export default function JoinFlow() {
           </span>
           <p className="text-[13.5px] leading-relaxed text-ink-700">
             <span className="font-bold tracking-[0.02em] text-ink-900">LIMITED TIME:</span> multi-month
-            plans are discounted — save up to <span className="font-bold text-gold-700">$540 / £420</span>{" "}
+            plans are discounted — save up to <span className="font-bold text-gold-700">$540 / £420 / €540</span>{" "}
             on the 12-month Elite plan. {RATE_NOTE[currency]}.
           </p>
         </div>
@@ -197,8 +197,8 @@ export default function JoinFlow() {
                   <div className="animate-rise-in space-y-3">
                     {PACKAGES.map((p) => {
                       const active = p.id === packId;
-                      const priceP = currency === "USD" ? p.usd : p.gbp;
-                      const wasP = currency === "USD" ? p.usdWas : p.gbpWas;
+                      const priceP = currency === "USD" ? p.usd : currency === "GBP" ? p.gbp : p.eur;
+                      const wasP = currency === "USD" ? p.usdWas : currency === "GBP" ? p.gbpWas : p.eurWas;
                       const save = wasP ? Math.round(((wasP - priceP) / wasP) * 100) : 0;
                       return (
                         <button
@@ -315,7 +315,7 @@ export default function JoinFlow() {
                           autoComplete="email"
                         />
                       </Field>
-                      <Field label="WhatsApp number" error={errors.phone} invalid={!!errors.phone}>
+                      <Field label="Phone / Telegram number" error={errors.phone} invalid={!!errors.phone}>
                         <input
                           type="tel"
                           className={cn(field, errors.phone ? "border-flame-500" : "border-ink-900/12 focus:border-gold-500")}
@@ -415,16 +415,7 @@ export default function JoinFlow() {
                       payment being confirmed.
                     </p>
 
-                    <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                      <a
-                        href={whatsappLink(summary)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] px-6 py-4 text-[14px] font-bold text-[#04231a] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#37e077] hover:shadow-[0_18px_38px_-18px_rgba(37,211,102,.95)]"
-                      >
-                        <WhatsApp className="h-5 w-5" />
-                        Send via WhatsApp
-                      </a>
+                    <div className="mt-6 grid gap-3">
                       <button
                         type="button"
                         onClick={() => {
@@ -567,16 +558,7 @@ export default function JoinFlow() {
                 <p className="mt-2 text-[13px] leading-relaxed text-ink-500">
                   Message the desk directly — no bots, no call centre. We answer between 07:00 and 22:00 GMT.
                 </p>
-                <div className="mt-4 grid grid-cols-2 gap-2.5">
-                  <Btn
-                    href={whatsappLink("Hello Fortune Academy World, I have a question before joining.")}
-                    external
-                    variant="wa"
-                    size="sm"
-                    icon={<WhatsApp className="h-4 w-4" />}
-                  >
-                    WhatsApp
-                  </Btn>
+                <div className="mt-4 grid grid-cols-1 gap-2.5">
                   <Btn href={telegramLink()} external variant="tg" size="sm" icon={<Telegram className="h-4 w-4" />}>
                     Telegram
                   </Btn>

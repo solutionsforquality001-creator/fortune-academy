@@ -1,5 +1,5 @@
-import { EMAIL, PHONE_DISPLAY, telegramLink, whatsappLink } from "@/lib/site";
-import { ArrowUpRight, Clock, Globe, Mail, Telegram, WhatsApp } from "./Icons";
+import { EMAIL, PHONE_DISPLAY, telegramLink } from "@/lib/site";
+import { ArrowUpRight, Clock, Globe, Mail, Telegram } from "./Icons";
 import { Eyebrow, SectionShell } from "./ui";
 
 const BG =
@@ -7,18 +7,10 @@ const BG =
 
 const CHANNELS = [
   {
-    key: "WhatsApp",
-    icon: WhatsApp,
-    value: PHONE_DISPLAY,
-    note: "Fastest route · average first reply 3 minutes",
-    href: whatsappLink("Hello Fortune Academy World, I'd like some information about joining."),
-    tint: "#25D366",
-  },
-  {
     key: "Telegram",
     icon: Telegram,
     value: PHONE_DISPLAY,
-    note: "Community links, payment receipts & member support",
+    note: "Fastest route · community links, payment receipts & member support",
     href: telegramLink(),
     tint: "#2AABEE",
   },

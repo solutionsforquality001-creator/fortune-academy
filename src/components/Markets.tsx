@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { cn } from "@/utils/cn";
-import { CALENDAR, CALENDAR_URL, INSIGHTS, SCHEDULE, whatsappLink } from "@/lib/site";
-import { ArrowUpRight, Calendar, Clock, Lock, Pulse, WhatsApp } from "./Icons";
+import { CALENDAR, CALENDAR_URL, INSIGHTS, SCHEDULE, telegramLink } from "@/lib/site";
+import { ArrowUpRight, Calendar, Clock, Lock, Pulse, Telegram } from "./Icons";
 import { Btn, Eyebrow, ImpactDot, SectionShell } from "./ui";
 
 const TABS = [
@@ -169,7 +169,7 @@ export default function Markets() {
                   {INSIGHTS.map((n, i) => (
                     <li key={n.title}>
                       <a
-                        href={whatsappLink(`Hello, I'd like to read the member insight: "${n.title}"`)}
+                        href={telegramLink()}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group flex items-start gap-5 px-5 py-6 transition-colors duration-300 hover:bg-white/[0.035]"
@@ -238,11 +238,11 @@ export default function Markets() {
                     <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Btn>
                   <Btn
-                    href={whatsappLink("Hello, I'm an existing member and need help accessing the portal.")}
+                    href={telegramLink()}
                     external
                     variant="outline"
                     className="w-full"
-                    icon={<WhatsApp className="h-4 w-4 text-mint-400" />}
+                    icon={<Telegram className="h-4 w-4 text-mint-400" />}
                   >
                     Member support
                   </Btn>

@@ -9,9 +9,6 @@ export const PHONE_DISPLAY = "+44 7460 033935";
 export const PHONE_RAW = "447460033935";
 export const EMAIL = "support@fortuneacademy.world";
 
-export const whatsappLink = (message?: string) =>
-  `https://wa.me/${PHONE_RAW}${message ? `?text=${encodeURIComponent(message)}` : ""}`;
-
 export const telegramLink = (message?: string) =>
   `https://t.me/+${PHONE_RAW}${message ? `?text=${encodeURIComponent(message)}` : ""}`;
 
@@ -265,7 +262,7 @@ export const TESTIMONIALS = [
     location: "Milan, IT",
     plan: "3-month plan",
     quote:
-      "Support answered on WhatsApp within two minutes at 22:00 my time. That level of care is rare.",
+      "Support answered on Telegram within two minutes at 22:00 my time. That level of care is rare.",
     rating: 5,
   },
   {
@@ -287,6 +284,8 @@ export type Pack = {
   usdWas?: number;
   gbp: number;
   gbpWas?: number;
+  eur: number;
+  eurWas?: number;
   blurb: string;
   features: string[];
   popular?: boolean;
@@ -298,6 +297,7 @@ export const PACKAGES: Pack[] = [
     name: "Starter",
     months: 1,
     usd: 120,
+    eur: 120,
     gbp: 95,
     blurb: "Test the water. Full access for one month, no lock-in.",
     features: [
@@ -314,6 +314,8 @@ export const PACKAGES: Pack[] = [
     months: 3,
     usd: 300,
     usdWas: 360,
+    eur: 300,
+    eurWas: 360,
     gbp: 240,
     gbpWas: 285,
     blurb: "One full quarter — enough time to build and validate a process.",
@@ -331,6 +333,8 @@ export const PACKAGES: Pack[] = [
     months: 6,
     usd: 540,
     usdWas: 720,
+    eur: 540,
+    eurWas: 720,
     gbp: 430,
     gbpWas: 570,
     blurb: "Our most chosen plan. Deep mentorship through two market cycles.",
@@ -339,7 +343,7 @@ export const PACKAGES: Pack[] = [
       "Weekly 1-to-1 mentor review",
       "Backtesting protocol & templates",
       "Prop-firm challenge guidance",
-      "Priority WhatsApp support",
+      "Priority Telegram support",
     ],
     popular: true,
   },
@@ -349,6 +353,8 @@ export const PACKAGES: Pack[] = [
     months: 12,
     usd: 900,
     usdWas: 1440,
+    eur: 900,
+    eurWas: 1440,
     gbp: 720,
     gbpWas: 1140,
     blurb: "A full year on the desk. The plan members rarely leave.",
@@ -381,7 +387,7 @@ export const FAQS = [
   },
   {
     q: "How do I pay?",
-    a: "Choose a plan in the join form, then pay by cryptocurrency or bank transfer. For crypto you select your coin and network, send the payment and upload your receipt. For bank transfer, request our account details from support on WhatsApp or Telegram.",
+    a: "Choose a plan in the join form, then pay by cryptocurrency or bank transfer. For crypto you select your coin and network, send the payment and upload your receipt. For bank transfer, request our account details from support on Telegram.",
   },
   {
     q: "Which cryptocurrencies do you accept?",
@@ -405,7 +411,7 @@ export const FAQS = [
   },
   {
     q: "How do I contact support?",
-    a: `WhatsApp or Telegram on ${PHONE_DISPLAY}, or email ${EMAIL}. Support hours are 07:00–22:00 GMT, seven days a week, with urgent member queries answered outside those hours.`,
+    a: `Telegram on ${PHONE_DISPLAY}, or email ${EMAIL}. Support hours are 07:00–22:00 GMT, seven days a week, with urgent member queries answered outside those hours.`,
   },
 ];
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { cn } from "@/utils/cn";
-import { FAQS, PHONE_DISPLAY, telegramLink, whatsappLink } from "@/lib/site";
-import { ArrowUpRight, Plus, Telegram, WhatsApp } from "./Icons";
+import { FAQS, PHONE_DISPLAY, telegramLink } from "@/lib/site";
+import { ArrowUpRight, Plus, Telegram } from "./Icons";
 import { Btn, Eyebrow, SectionShell } from "./ui";
 
 export default function Faq() {
@@ -38,10 +38,7 @@ export default function Faq() {
               <p className="mt-3 text-[12.5px] leading-relaxed text-paper-400">
                 07:00 – 22:00 GMT, seven days a week. Average first reply: 3 minutes.
               </p>
-              <div className="mt-5 grid grid-cols-2 gap-2.5">
-                <Btn href={whatsappLink("Hello Fortune Academy World, I have a question.")} external variant="wa" size="sm" icon={<WhatsApp className="h-4 w-4" />}>
-                  WhatsApp
-                </Btn>
+              <div className="mt-5 grid grid-cols-1 gap-2.5">
                 <Btn href={telegramLink()} external variant="tg" size="sm" icon={<Telegram className="h-4 w-4" />}>
                   Telegram
                 </Btn>
@@ -110,7 +107,7 @@ export default function Faq() {
           </ul>
 
           <a
-            href={whatsappLink("Hello, I have a question that isn't in the FAQ.")}
+            href={telegramLink()}
             target="_blank"
             rel="noopener noreferrer"
             className="reveal group mt-8 flex items-center justify-between gap-4 rounded-2xl border border-white/8 bg-ink-850/50 px-6 py-5 transition-all duration-400 hover:-translate-y-0.5 hover:border-gold-500/45 hover:bg-ink-800/70"
@@ -120,7 +117,7 @@ export default function Faq() {
                 Question not answered here?
               </span>
               <span className="mt-1 block text-[13px] text-paper-400">
-                Send it over on WhatsApp — a mentor, not a bot, will reply.
+                Send it over on Telegram — a mentor, not a bot, will reply.
               </span>
             </span>
             <ArrowUpRight className="h-5 w-5 shrink-0 text-gold-400 transition-transform duration-400 group-hover:translate-x-1 group-hover:-translate-y-1" />

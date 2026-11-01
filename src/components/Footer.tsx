@@ -1,5 +1,5 @@
-import { BRAND, CALENDAR_URL, EMAIL, NAV_LINKS, PHONE_DISPLAY, telegramLink, whatsappLink } from "@/lib/site";
-import { Arrow, ArrowUpRight, Logo, Mail, Phone, Telegram, WhatsApp } from "./Icons";
+import { BRAND, CALENDAR_URL, EMAIL, NAV_LINKS, PHONE_DISPLAY, telegramLink } from "@/lib/site";
+import { Arrow, ArrowUpRight, Logo, Mail, Phone, Telegram } from "./Icons";
 
 const PROGRAMME_LINKS = [
   { label: "Foundation Mentorship", href: "#programmes" },
@@ -67,7 +67,6 @@ export default function Footer() {
 
             <div className="mt-7 flex gap-2.5">
               {[
-                { Icon: WhatsApp, href: whatsappLink("Hello Fortune Academy World."), label: "WhatsApp", tint: "hover:border-[#25D366]/60 hover:text-[#7bf0b4]" },
                 { Icon: Telegram, href: telegramLink(), label: "Telegram", tint: "hover:border-[#2AABEE]/60 hover:text-[#8fdcff]" },
                 { Icon: ArrowUpRight, href: CALENDAR_URL, label: "Market calendar", tint: "hover:border-gold-500/60 hover:text-gold-300" },
               ].map(({ Icon, href, label, tint }) => (

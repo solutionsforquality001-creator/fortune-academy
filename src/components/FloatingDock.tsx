@@ -1,7 +1,7 @@
 import { cn } from "@/utils/cn";
-import { telegramLink, whatsappLink } from "@/lib/site";
+import { telegramLink } from "@/lib/site";
 import { useScrollInfo } from "@/hooks/useMotion";
-import { Arrow, Telegram, WhatsApp } from "./Icons";
+import { Arrow, Telegram } from "./Icons";
 
 export default function FloatingDock() {
   const { y } = useScrollInfo();
@@ -33,22 +33,6 @@ export default function FloatingDock() {
         </span>
         <span className="max-w-0 overflow-hidden text-[13px] font-bold whitespace-nowrap text-[#04202e] transition-all duration-400 group-hover:max-w-[9rem] group-hover:pr-4">
           Telegram
-        </span>
-      </a>
-
-      <a
-        href={whatsappLink("Hello Fortune Academy World, I'd like to join the trading programme.")}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Message Fortune Academy World on WhatsApp"
-        className="group relative flex items-center gap-0 overflow-hidden rounded-full bg-[#25D366] shadow-[0_16px_36px_-14px_rgba(37,211,102,.95)] transition-all duration-400 hover:-translate-y-1"
-      >
-        <span className="relative flex h-14 w-14 items-center justify-center text-[#04231a]">
-          <span className="absolute inset-0 animate-pulse-ring rounded-full bg-[#25D366]/60" aria-hidden="true" />
-          <WhatsApp className="relative h-7 w-7" />
-        </span>
-        <span className="max-w-0 overflow-hidden text-[13.5px] font-bold whitespace-nowrap text-[#04231a] transition-all duration-400 group-hover:max-w-[11rem] group-hover:pr-5">
-          Chat on WhatsApp
         </span>
       </a>
     </div>
