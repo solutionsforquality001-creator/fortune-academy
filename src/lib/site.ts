@@ -368,8 +368,18 @@ export const PACKAGES: Pack[] = [
   },
 ];
 
+export type Deposit = { id: string; coin: string; network: string; address: string };
+
+/* Crypto deposit addresses — edit here to change where payments are sent. */
+export const DEPOSITS: Deposit[] = [
+  { id: "btc", coin: "BTC", network: "Bitcoin", address: "1K5zVRVCBoiu1pTtPgJrjNHpR1JKV7S7V6" },
+  { id: "usdt", coin: "USDT", network: "BEP 20", address: "0x173ee7c477d82ed75ed7f0c2cf7213f913d59134" },
+  { id: "eth", coin: "ETH", network: "ERC 20", address: "0x173ee7c477d82ed75ed7f0c2cf7213f913d59134" },
+  { id: "trx", coin: "Tron", network: "TRC 20", address: "TTvKhzLYHYcjYR9F2ycmuwtQPUmPCgEppD" },
+];
+
 export const PAYMENT_METHODS = [
-  { id: "crypto", label: "Cryptocurrency", note: "BTC · USDT (BEP20/TRC20) · ETH (ERC20)", detail: "USD price applies. Confirmed in 1–5 minutes." },
+  { id: "crypto", label: "Cryptocurrency", note: "BTC · USDT (BEP20) · ETH (ERC20) · Tron (TRC20)", detail: "USD price applies. Confirmed in 1–5 minutes." },
   { id: "bank", label: "Bank transfer", note: "GBP or USD account details on request", detail: "Details released after your application is reviewed." },
 ] as const;
 
@@ -391,7 +401,7 @@ export const FAQS = [
   },
   {
     q: "Which cryptocurrencies do you accept?",
-    a: "Bitcoin (Bitcoin network), USDT (BEP20 or TRC20), Ethereum (ERC20) and Tron. Always send on the network shown in your invoice — funds sent on a different network cannot be recovered.",
+    a: "Bitcoin (Bitcoin network), USDT (BEP20), Ethereum (ERC20) and Tron (TRC20). Always send on the network shown in your invoice — funds sent on a different network cannot be recovered.",
   },
   {
     q: "How fast do I get access after paying?",

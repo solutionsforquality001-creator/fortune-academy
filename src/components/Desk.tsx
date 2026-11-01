@@ -6,7 +6,6 @@ const MENTOR = {
   name: "Isabella Logan",
   role: "Head Of Education, Trader And Consultant",
   since: "Trading since 2009",
-  img: "/isabella-logan.jpg",
 };
 
 const FOR_YOU = [
@@ -109,32 +108,25 @@ export default function Desk() {
           {/* ---------------- right: photo ---------------- */}
           <div className="lg:col-span-6">
             <div
-              className="reveal group relative overflow-hidden rounded-[20px] border border-gold-400/70 shadow-[0_36px_80px_-40px_rgba(224,169,60,.7)]"
+              className="reveal relative overflow-hidden rounded-[20px] border border-gold-400/70 shadow-[0_36px_80px_-40px_rgba(224,169,60,.7)]"
               style={{ transitionDelay: "140ms" }}
             >
-              <div className="relative h-[460px] overflow-hidden sm:h-[560px]">
-                <img
-                  src={MENTOR.img}
-                  alt={`${MENTOR.name}, ${MENTOR.role} at Fortune Academy World`}
-                  loading="lazy"
-                  className="h-full w-full object-cover object-top transition-transform duration-[1.4s] ease-out group-hover:scale-[1.03]"
-                />
+              <div className="relative flex h-[320px] flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 px-6 text-center sm:h-[380px]">
                 <div
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(to top, rgba(4,6,12,.96) 4%, rgba(4,6,12,.4) 38%, rgba(4,6,12,0) 70%)",
-                  }}
+                  className="pointer-events-none absolute inset-0 opacity-60"
+                  style={{ background: "radial-gradient(circle at 50% 35%, rgba(224,169,60,.22), transparent 62%)" }}
+                  aria-hidden="true"
                 />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <p className="font-display text-[28px] leading-tight font-semibold text-paper-50">
-                    {MENTOR.name}
-                  </p>
-                  <p className="mt-1 font-mono text-[10.5px] tracking-[0.2em] text-gold-400 uppercase">
-                    {MENTOR.role}
-                  </p>
-                  <p className="mt-2 text-[13px] text-paper-300">{MENTOR.since}</p>
-                </div>
+                <span className="relative flex h-28 w-28 items-center justify-center rounded-full border border-gold-400/60 bg-gold-400/10 font-display text-[44px] font-semibold text-gold-300">
+                  {MENTOR.name.split(" ").map((w) => w[0]).join("")}
+                </span>
+                <p className="relative mt-6 font-display text-[28px] leading-tight font-semibold text-paper-50">
+                  {MENTOR.name}
+                </p>
+                <p className="relative mt-1.5 font-mono text-[10.5px] tracking-[0.2em] text-gold-400 uppercase">
+                  {MENTOR.role}
+                </p>
+                <p className="relative mt-2 text-[13px] text-paper-300">{MENTOR.since}</p>
               </div>
             </div>
 

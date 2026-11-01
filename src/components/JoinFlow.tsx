@@ -7,6 +7,7 @@ import {
   PHONE_DISPLAY,
   telegramLink,
 } from "@/lib/site";
+import CryptoPay from "./CryptoPay";
 import { Arrow, ArrowUpRight, Check, Copy, Sparkle, Telegram } from "./Icons";
 import { Btn, Eyebrow, SectionShell } from "./ui";
 
@@ -408,6 +409,8 @@ export default function JoinFlow() {
                         {summary}
                       </pre>
                     </div>
+
+                    {payment === "crypto" && <CryptoPay usd={pack.usd} summary={summary} />}
 
                     <p className="mt-5 text-[13.5px] leading-relaxed text-ink-500">
                       Send this straight to our support desk. You will get access instructions and the
